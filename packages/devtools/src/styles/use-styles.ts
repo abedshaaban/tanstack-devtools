@@ -335,9 +335,9 @@ const stylesFactory = (theme: DevtoolsStore['settings']['theme']) => {
       position: absolute;
       left: -9999px;
       top: 0;
-      white-space: nowrap;
       visibility: hidden;
       pointer-events: none;
+      box-sizing: border-box;
     `,
     serpMeasureHiddenMobile: css`
       position: absolute;
@@ -664,7 +664,12 @@ const stylesFactory = (theme: DevtoolsStore['settings']['theme']) => {
     pluginsTabContent: css`
       width: 100%;
       height: 100%;
-      overflow-y: auto;
+
+      & > * > * {
+        min-width: 0;
+        min-height: 0;
+        height: 100%;
+      }
 
       &:not(:last-child) {
         border-right: 5px solid ${t(colors.purple[200], colors.purple[800])};
